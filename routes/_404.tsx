@@ -13,7 +13,7 @@ export default function NotFoundPage({}: PageProps) {
                     <p>
                         The page you were looking for doesn't exist.
                     </p>
-                    <span><i class="fa-solid fa-house"></i> <a class="more" href="/">Go back home</a></span>
+                    <span><i class="fa-solid fa-house"></i> <a href="/">Return home</a></span>
                 </div>
             </div>
         </>

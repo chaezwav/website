@@ -2,7 +2,7 @@
 title: This is my first blog post!
 published_at: 2022-11-04T15:00:00.000Z
 tags: [ "intro", "not intro" ]
-status: 0
+status: 2
 ---
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Nec fusce pulvinar luctus lorem rhoncus et sit at hac. Bibendum
