@@ -1,6 +1,6 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "../utils/posts.ts";
-import { PostCard } from "../components/PostCard.tsx";
+import {Handlers, PageProps} from "$fresh/server.ts";
+import {getPosts, Post} from "../utils/posts.ts";
+import {PostCard} from "../components/PostCard.tsx";
 
 export const handler: Handlers<Post[]> = {
     async GET(_req, ctx) {
@@ -15,7 +15,8 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
         <main>
             <h1>*ੈ✩‧₊˚ Post Archive</h1>
             <p>
-                Welcome! This is a general archive of all the posts on my blog, organized by publication date and visibility!
+                Welcome! This is a general archive of all the posts on my blog, organized by publication date and
+                visibility!
             </p>
             <div>
                 <h2>
@@ -27,7 +28,8 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
                             {new Date(post.publishedAt).toLocaleDateString(
                                 "en-us",
                             )}
-                        </time>{" - "}
+                        </time>
+                        {" - "}
                         <a href={`/${post.slug}`}>{post.title}</a>
                     </p>
                 ))}

@@ -1,6 +1,6 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { getPosts, Post } from "../utils/posts.ts";
-import { PostCard } from "../components/PostCard.tsx";
+import {Handlers, PageProps} from "$fresh/server.ts";
+import {getPosts, Post} from "../utils/posts.ts";
+import {PostCard} from "../components/PostCard.tsx";
 
 export const handler: Handlers<Post[]> = {
     async GET(_req, ctx) {
@@ -26,7 +26,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
                 <h2>
                     <i className="fa-solid fa-tower-broadcast"></i> Latest post
                 </h2>
-                <PostCard post={posts[0]} />
+                <PostCard post={posts[0]}/>
             </div>
             <div>
                 <h2>
@@ -51,7 +51,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
                         </p>
                     )
                     : posts.length - 1 < 6
-                    ? (
+                        ? (
                             <p className="name">
                                 <i className="fa-solid fa-heart-crack"></i>{" "}
                                 Welp, that's all the posts...
@@ -61,9 +61,9 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
                             <span>
                             <i className="fa-solid fa-clock-rotate-left"></i>
                                 {" "}
-                            <a href="/archive">See all posts</a>
+                                <a href="/archive">See all posts</a>
                         </span>
-                    )}
+                        )}
             </div>
         </main>
     );

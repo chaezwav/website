@@ -1,8 +1,8 @@
-import { Post } from "../utils/posts.ts";
+import {Post} from "../utils/posts.ts";
 import markdownit from "npm:markdown-it@12.0.4";
 
 export function PostCard(props: { post: Post }) {
-    const { post } = props;
+    const {post} = props;
     const md = markdownit();
 
     return (
@@ -10,7 +10,7 @@ export function PostCard(props: { post: Post }) {
             <h3>
                 {post.title}
             </h3>
-            <div >
+            <div>
                 <span>
                     <i className="fa-solid fa-clock"></i>{" "}
                     <time>
