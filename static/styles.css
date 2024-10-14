@@ -11,6 +11,14 @@ body {
     color: var(--secondary-color);
     font-family: "Open Sans", sans-serif;
     margin: 5% 20% 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+@media screen and (min-width: 500px) {
+    body {
+        margin: 5% 10% 0px;
+    }
 }
 
 time {
@@ -51,12 +59,11 @@ h3 {
 }
 
 footer {
-    position: fixed;
     text-align: center;
     left: 0;
     bottom: 0;
     width: 100%;
-    margin-bottom: 2.5%;
+    margin-top: auto;
 }
 
 a:hover {
