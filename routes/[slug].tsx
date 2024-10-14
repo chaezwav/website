@@ -61,6 +61,9 @@ export default function PostPage(props: PageProps<Post>) {
                         __html: md.render(post.content),
                     }}
                 />
+                <span>
+                  <i className="fa-solid fa-house"></i> <a href="/">Return home</a>
+                </span>
             </main>
         </>
     );
