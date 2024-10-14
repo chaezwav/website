@@ -13,6 +13,10 @@ body {
     margin: 5% 20% 0px;
 }
 
+time {
+    font-family: "Noto Sans Mono", monospace;
+}
+
 /*.postcard p {*/
 /*  background-color: var(--accent-color);*/
 /*  color: var(--background-color);*/

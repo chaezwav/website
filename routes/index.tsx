@@ -2,6 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "../utils/posts.ts";
 import { PostCard } from "../components/PostCard.tsx";
 import { Banner, BannerProps } from "../components/Banner.tsx";
+import { format } from "jsr:@std/datetime";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -17,6 +18,7 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
     title: "Warning: Early Development",
     content:
       "This site is still in early development and may not be fully functional.",
+    icon: "fa-triangle-exclamation",
   };
 
   return (
@@ -30,20 +32,18 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
       </p>
       <div>
         <h2>
-          <i className="fa-solid fa-tower-broadcast"></i> Latest post
+          <i className="fa-solid fa-stopwatch"></i> Latest post
         </h2>
         <PostCard post={posts[0]} />
       </div>
       <div>
         <h2>
-          <i className="fa-solid fa-newspaper"></i> Recent posts
+          <i className="fa-solid fa-satellite-dish"></i> Recent posts
         </h2>
         {posts.slice(1, 5).map((post) => (
           <p>
-            <time style="font-family: 'Noto Sans Mono', monospace;">
-              {new Date(post.publishedAt).toLocaleDateString(
-                "en-us",
-              )}
+            <time>
+              {format(new Date(post.publishedAt), "yyyy-MM-dd")}
             </time>
             {" - "}
             <a href={`/${post.slug}`}>{post.title}</a>

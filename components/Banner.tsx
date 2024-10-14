@@ -1,6 +1,7 @@
 export interface BannerProps {
   title: string;
   content: string;
+  icon: string;
 }
 
 export function Banner(props: { banner: BannerProps }) {
@@ -8,7 +9,10 @@ export function Banner(props: { banner: BannerProps }) {
 
   return (
     <div class="banner">
-      <h3>{banner.title}</h3>
+      <h3>
+        <i class={"fa-solid " + banner.icon}></i>
+        {banner.title}
+      </h3>
       <p>{banner.content}</p>
     </div>
   );
