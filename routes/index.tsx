@@ -1,8 +1,9 @@
+import { format } from "jsr:@std/datetime";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { getPosts, Post } from "../utils/posts.ts";
 import { PostCard } from "../components/PostCard.tsx";
+import { Nav } from "../components/Nav.tsx";
 import { Banner, BannerProps } from "../components/Banner.tsx";
-import { format } from "jsr:@std/datetime";
 
 export const handler: Handlers<Post[]> = {
   async GET(_req, ctx) {
@@ -23,8 +24,9 @@ export default function BlogIndexPage(props: PageProps<Post[]>) {
 
   return (
     <main>
-      <h1>ദ്ദി ˉ͈̀꒳ˉ͈́ )✧ Koehn's Blog</h1>
+      <br />
       <Banner banner={banner} />
+      <h1>ദ്ദി ˉ͈̀꒳ˉ͈́ )✧ Koehn's Blog</h1>
       <p>
         Welcome! This is my blog that I may or may not update ever... This was
         mostly an experiment to get better at programming and see what I was
