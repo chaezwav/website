@@ -27,6 +27,7 @@ export function PostCard(props: { post: Post }) {
         • {post.tags.map((tag) => (
           <a href="#">
             #{tag}
+            {" "}
           </a>
         ))}
       </div>
