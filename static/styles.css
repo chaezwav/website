@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
 
 :root {
     --accent-color: #f7cacd;
@@ -9,7 +9,7 @@
 body {
     background-color: var(--background-color);
     color: var(--secondary-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 5% 20% 0px;
 }
 
@@ -21,14 +21,29 @@ body {
 /*  padding: 10px;*/
 /*}*/
 
-a, .name, span {
+.banner {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
+.banner h3,
+.banner p {
+    color: var(--background-color) !important;
+}
+
+a,
+.name,
+span {
     color: var(--accent-color);
     text-decoration: none;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: var(--accent-color);
-    font-family: 'Outfit', sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 footer {
@@ -51,4 +66,3 @@ a:hover {
 /*  margin: 10px 0px;*/
 /*  padding: 5px;*/
 /*}*/
-
