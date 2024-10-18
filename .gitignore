@@ -1,3 +1,5 @@
-.env
+.env*.local
 .vscode
 .idx
+node_modules
+.next
