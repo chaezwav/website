@@ -71,3 +71,8 @@ footer {
 a:hover {
     text-decoration: underline;
 }
+
+.navbar a:hover {
+    font-weight: bold;
+    text-decoration: none;
+}

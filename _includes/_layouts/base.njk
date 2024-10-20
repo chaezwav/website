@@ -10,14 +10,14 @@
     />
     <meta name="generator" content="{{ eleventy.generator }}" />
     <link rel="stylesheet" href="/bundle.css" />
-    <link rel="icon" href="/prod.ico" />
+    <link rel="icon" href="/{{ process.env.PRODUCTION_STATE }}.ico" />
     <link rel="me" href="https://social.lol/@koehn" />
     <link rel="me" href="proven28b4a7" />
   </head>
   <body>
     <span class="navbar">
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
+      <a href="/">/home</a>
+      <a href="/blog/">/blog</a>
     </span>
     {{ content | safe }}
     <footer>
