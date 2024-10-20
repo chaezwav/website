@@ -7,3 +7,8 @@ layout: _layouts/base.njk
 <main id="skip">
   <heading-anchors> {{ content | safe }} </heading-anchors>
 </main>
+
+<h2>{% phicon "broadcast", "fill" %} Other Posts</h2>
+{%- for post in collections.post.slice(0,4) -%}
+<time>{{ post.date.toLocaleDateString('en-us') }}</time> -
+<a href="{{ post.url }}">{{ post.data.title }}</a> {%- endfor -%}
