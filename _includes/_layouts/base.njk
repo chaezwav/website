@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or metadata.title }}</title>
+    <meta
+      name="description"
+      content="{{ description or metadata.description }}"
+    />
+    <meta name="generator" content="{{ eleventy.generator }}" />
+    <link rel="stylesheet" href="/bundle.css" />
+    <link rel="icon" href="/prod.ico" />
+  </head>
+  <body>
+    <span class="navbar">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+    </span>
+    {{ content | safe }}
+    <footer>
+      <p>
+        Made by
+        <strong class="name">Koehn</strong>
+        with
+        <a href="https://www.11ty.dev/">
+          <strong>11ty</strong>
+        </a>
+        © <time class="name">2024</time>
+      </p>
+    </footer>
+  </body>
+</html>
