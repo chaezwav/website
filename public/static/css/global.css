@@ -1,0 +1,217 @@
+@import url("fonts.css");
+
+:root {
+    /*font-family: Inter, sans-serif;*/
+    /*font-feature-settings: 'liga' 1, 'calt' 1; !* fix for Chrome *!*/
+    --font: "IBM Plex Sans", serif;
+    --font-mono: "IBM Plex Mono", serif;
+    --primary-color: #f4bbd3;
+    --secondary-color: #f7eeed;
+    --tertiary-color: #fbcaef;
+    --background-color: #2d292d;
+}
+
+/*@supports (font-variation-settings: normal) {*/
+/*    :root {*/
+/*        --font: "", sans-serif;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 1070px) {
+    body {
+        margin: 3% 5% 0 !important;
+    }
+
+    .banner p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: -4% -50% 0 !important;
+    }
+
+    .blog-page, .main-column.tag-page {
+        margin: 3% 5% 0 0 !important;
+        gap: 0 !important;
+        flex: 100% !important;
+        flex-direction: column !important;
+    }
+
+    h1 {
+        font-size: 2em !important;
+        max-width: min-content !important;
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    margin: 3% 25% 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    vertical-align: middle !important;
+    font-size: 1.5rem;
+    font-family: var(--font);
+}
+
+blockquote {
+    color: var(--tertiary-color);
+    font-style: italic;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+    /* font-family: "Excon Bold", "Open Sans", sans-serif !important; */
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+    color: var(--primary-color) !important;
+    font-family: var(--font-mono);
+    font-weight: 900;
+}
+
+/* .latest,
+.latest a {
+  font-family: var(--font-bold);
+  background-color: var(--primary-color) !important;
+  color: var(--background-color);
+}
+
+.latest a {
+  padding: 0 0.5rem;
+}
+
+.latest a:hover {
+  background-color: var(--background-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.latest {
+  border-radius: 8px;
+  padding: 0.5rem;
+} */
+
+.navbar {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-start;
+    /*background-color: var(--background-color);*/
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.navbar a {
+    /*color: var(--secondary-color);*/
+    text-decoration: none;
+    font-family: InterVariable, sans-serif;
+    padding: 0.2rem;
+}
+
+/* .navbar a:hover,
+.navbar strong:hover {
+    color: var(--background-color) !important;*/
+    /*background-color: var(--primary-color);*/
+
+    /*strong {*/
+    /*    color: var(--background-color) !important;*/
+    /*}
+} */
+
+.banner p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: -6% -50% 0;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    font-family: InterVariable, sans-serif;
+    font-weight: bold;
+    padding: 1em;
+}
+
+.metadata {
+    /*font-size: 1rem;*/
+    color: var(--primary-color);
+    line-height: 0.5rem;
+    font-family: var(--font-mono);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+footer {
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 2em 0 1em 0;
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 10px;
+}
+
+a {
+    color: var(--primary-color) !important;
+    text-decoration: none;
+    padding: 0.1rem 0.2rem;
+    font-weight: 700;
+    font-family: var(--font-mono) !important;
+}
+
+a.linkback {
+    color: var(--tertiary-color) !important;
+    font-weight: 400;
+    font-style: italic;
+}
+
+a.linkback:hover {
+    color: inherit !important;
+    background-color: var(--background-color);
+}
+
+a:hover {
+    color: var(--background-color) !important;
+    background-color: var(--primary-color);
+}
+
+.metafields > .items {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.blog-page {
+    display: flex;
+    gap: 1em;
+}
+
+.blog-page > .main-column {
+    flex: 0 0 70%;
+}
+
+.container {
+    text-wrap: nowrap;
+}
+
+/*.blog-page:has(.main-column.tag-page) {*/
+/*    .main-column {*/
+/*        margin: 0 -30% 0 24%;*/
+/*    }*/
+/*}*/

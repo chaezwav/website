@@ -1,0 +1,26 @@
+/*
+    Fonts CSS file
+    - Importing custom fonts from the /fonts directory
+
+    CommitMono
+    - A monospaced font designed for coding
+    - Designed by Eigil Nikolajsen
+    - https://commitmono.com
+    - Bold and Regular weights
+
+/* CommitMono */
+@font-face {
+    font-family: "CommitMono";
+    src: url("../fonts/CommitMono/regular.otf") format("opentype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "CommitMono Bold";
+    src: url("../fonts/CommitMono/bold.otf") format("opentype");
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}

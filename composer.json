@@ -1,0 +1,6 @@
+{
+    "require": {
+        "cebe/markdown": "~1.2.0",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
