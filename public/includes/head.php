@@ -10,7 +10,7 @@
 <body>
 <div class="profile">
 	<a class="image" href="/">
-		<img alt="koehn.lol" src="/static/favicon.svg" width="80">
+		<img alt="koehn.lol" src="/static/icon.svg" width="80">
 	</a>
 	<div class="body">
 		<h2>koehn</h2>

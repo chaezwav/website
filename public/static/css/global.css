@@ -88,8 +88,9 @@ hr {
     gap: 0.5rem;
 }
 
-.profile > .image:active {
-    transform: translateY(5px);
+.profile > .image:hover {
+    /*transform: translateY(5px);*/
+    animation: spin 2s linear infinite;
 }
 
 .profile > .body {
@@ -212,6 +213,7 @@ a {
 
 a:hover {
     color: var(--secondary-color) !important;
+    cursor: pointer;
     text-decoration: underline;
     text-decoration-style: wavy;
     -webkit-text-decoration-style: wavy;

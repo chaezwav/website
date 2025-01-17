@@ -6,13 +6,11 @@
 passion for learning languages, travelling, collecting K-Pop memorabilia,
 and photography.</p>
 <h2>@ Socials</h2>
-<div class="socials">
-	<p>~ <a href="https://git.sr.ht/~chaezwav/">Sourcehut</a></p>
-	<p>~ <a href="https://social.lol/@koehn">Mastodon (social.lol)</a></p>
-	<p>~ <a href="https://open.spotify.com/user/31bgkq6mpcoha246l7rxxpmc3uta?si=5de1f780c2ea45b5">Spotify</a></p>
-</div>
+	<a href="https://git.sr.ht/~chaezwav/">~ Sourcehut</a>
+	<a href="https://social.lol/@koehn">~ Mastodon (social.lol)</a>
+	<a href="https://open.spotify.com/user/31bgkq6mpcoha246l7rxxpmc3uta?si=5de1f780c2ea45b5">~ Spotify</a>
 <br/>
 <hr>
-<a href="/blog" class="linkback">Checkout my blog</a>
+<a href="/blog" class="linkback">~ Checkout my blog</a>
 <?php include_once dirname(__FILE__, 2) .'/includes/footer.php'?>
 </html>
