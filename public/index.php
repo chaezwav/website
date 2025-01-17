@@ -6,7 +6,6 @@ $dotenv->load();
 
 $request = $_SERVER['REQUEST_URI'];
 $viewDir = '/views/';
-// include '../config.php';
 
 switch ($request) {
     case '':

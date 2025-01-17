@@ -1,13 +1,11 @@
 @import url("fonts.css");
 
 :root {
-    /*font-family: Inter, sans-serif;*/
-    /*font-feature-settings: 'liga' 1, 'calt' 1; !* fix for Chrome *!*/
     --font: "IBM Plex Sans", serif;
-    --font-mono: "IBM Plex Mono", serif;
+    --font-mono: "CommitMono", serif;
     --primary-color: #f4bbd3;
     --secondary-color: #f7eeed;
-    --tertiary-color: #fbcaef;
+    --tertiary-color: #b294a4;
     --background-color: #2d292d;
 }
 
@@ -74,6 +72,28 @@ h2 {
     color: var(--primary-color) !important;
     font-family: var(--font-mono);
     font-weight: 900;
+}
+
+hr {
+    width: 100%;
+    display: block;
+    height: 1px;
+    border: 0;
+    background-color: var(--tertiary-color);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile > .image:active {
+    transform: translateY(5px);
+}
+
+.profile > .body {
+    line-height: 0.5rem;
 }
 
 /* .latest,
@@ -166,12 +186,8 @@ footer {
     padding: 10px;
 }
 
-a {
-    color: var(--primary-color) !important;
-    text-decoration: none;
-    padding: 0.1rem 0.2rem;
-    font-weight: 700;
-    font-family: var(--font-mono) !important;
+.socials {
+    line-height: 0.5rem;
 }
 
 a.linkback {
@@ -185,9 +201,20 @@ a.linkback:hover {
     background-color: var(--background-color);
 }
 
+
+a {
+    color: var(--primary-color) !important;
+    text-decoration: none;
+    padding: 0.1rem 0.2rem;
+    font-weight: 700;
+    font-family: var(--font-mono) !important;
+}
+
 a:hover {
-    color: var(--background-color) !important;
-    background-color: var(--primary-color);
+    color: var(--secondary-color) !important;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    -webkit-text-decoration-style: wavy;
 }
 
 .metafields > .items {

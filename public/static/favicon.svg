@@ -10,6 +10,8 @@
    inkscape:export-filename="bitmap.png.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.5-dev (fac61fb9, 2025-01-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.99655081"
-     inkscape:cx="283.9795"
-     inkscape:cy="265.9172"
+     inkscape:zoom="1.03"
+     inkscape:cx="159.70874"
+     inkscape:cy="258.25243"
      inkscape:window-width="1470"
      inkscape:window-height="793"
      inkscape:window-maximized="1"
@@ -69,39 +71,19 @@
     <path
        id="rect2"
        d="M 16.998157,2.7270507e-6 H 118.46851 A 16.998154,16.998154 45 0 1 135.46666,16.998157 V 118.46851 a 16.998154,16.998154 135 0 1 -16.99815,16.99815 H 16.998157 A 16.998154,16.998154 45 0 1 2.7270507e-6,118.46851 V 16.998157 A 16.998154,16.998154 135 0 1 16.998157,2.7270507e-6 Z"
-       style="fill:#2d292d;fill-opacity:1;stroke-width:0.569111"
+       style="display:inline;fill:#2d292d;fill-opacity:1;stroke-width:0.569111"
        inkscape:path-effect="#path-effect7"
-       inkscape:original-d="M 2.7270507e-6,2.7270507e-6 H 135.46666 V 135.46666 H 2.7270507e-6 Z" />
-    <rect
-       style="fill:#f4bbd3;fill-opacity:1;stroke-width:0.2151"
-       id="rect1"
-       width="15.875"
-       height="93.927086"
-       x="59.795834"
-       y="20.769789" />
-    <rect
-       style="fill:#f4bbd3;fill-opacity:1;stroke-width:0.2151"
-       id="rect1-1"
-       width="15.875"
-       height="93.927086"
-       x="-75.67083"
-       y="20.769789"
-       transform="rotate(-90)" />
-    <rect
-       style="fill:#f4bbd3;fill-opacity:1;stroke-width:0.2151"
-       id="rect1-1-8"
-       width="15.875"
-       height="93.927086"
-       x="-103.7269"
-       y="-46.963543"
-       transform="rotate(-135)" />
-    <rect
-       style="fill:#f4bbd3;fill-opacity:1;stroke-width:0.2151"
-       id="rect1-1-8-2"
-       width="15.875"
-       height="93.927086"
-       x="-7.9375005"
-       y="-142.75294"
-       transform="rotate(135)" />
+       inkscape:original-d="M 2.7270507e-6,2.7270507e-6 H 135.46666 V 135.46666 H 2.7270507e-6 Z"
+       inkscape:label="background" />
+    <path
+       style="font-weight:bold;font-size:70.5556px;font-family:CommitMono;-inkscape-font-specification:'CommitMono Bold';display:none;fill:#f4bbd3;stroke-width:0.264583"
+       d="m 21.342997,42.686098 h -8.81945 V 92.07502 h 8.81945 V 77.187788 L 27.269668,70.061672 40.604677,92.07502 H 50.623572 L 33.055227,63.076667 49.918016,42.686098 H 39.334676 L 21.342997,64.417223 Z M 59.090272,92.07502 h 8.81945 V 70.696672 H 84.137511 V 92.07502 h 8.81945 V 42.686098 h -8.81945 v 19.89668 H 67.909722 v -19.89668 h -8.81945 z m 50.447288,-5.997226 c 0,3.739447 2.96333,6.702782 6.70278,6.702782 3.73944,0 6.70278,-2.963335 6.70278,-6.702782 0,-3.739447 -2.96334,-6.702783 -6.70278,-6.702783 -3.73945,0 -6.70278,2.963336 -6.70278,6.702783 z"
+       id="text1"
+       aria-label="KH." />
+    <path
+       d="M 76.905597,56.532642 V 25.135399 H 58.56114 V 56.532642 L 28.575009,46.831247 22.930561,64.293759 52.916692,73.995154 34.395846,99.57156 49.212523,110.33129 67.733369,84.931272 86.254215,110.33129 101.07089,99.57156 82.550046,73.995154 112.53618,64.293759 106.89173,46.831247 Z"
+       id="text2"
+       style="font-weight:bold;font-size:176.389px;font-family:CommitMono;-inkscape-font-specification:'CommitMono Bold';fill:#f4bbd3;stroke-width:0.264583"
+       aria-label="*" />
   </g>
 </svg>
