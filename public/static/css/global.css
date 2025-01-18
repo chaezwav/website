@@ -88,9 +88,8 @@ hr {
     gap: 0.5rem;
 }
 
-.profile > .image:hover {
-    /*transform: translateY(5px);*/
-    animation: spin 2s linear infinite;
+.profile > .image:active {
+    transform: translateY(5px) !important;
 }
 
 .profile > .body {
@@ -162,15 +161,6 @@ hr {
     color: var(--primary-color);
     line-height: 0.5rem;
     font-family: var(--font-mono);
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 footer {
