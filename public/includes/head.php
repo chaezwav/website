@@ -1,3 +1,26 @@
+<?php // Replace with the actual access token
+
+// Set up the request headers
+session_start();
+$token = $_SESSION['token'];
+
+$headers = [
+    "Authorization: Bearer $token",
+];
+
+// Initialize cURL
+$ch = curl_init("https://api.spotify.com/v1/me/player/currently-playing");
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the request and decode the response
+$response = curl_exec($ch);
+curl_close($ch);
+
+$response_data = json_decode($response, true);
+?>
+
+
 <head>
 	<title>Hi</title>
 	<link rel="stylesheet" href="/static/css/global.css">
@@ -18,4 +41,5 @@
 	</div>
 </div>
 <hr>
+<a style="color: #79e09e !important;" href=<?php echo $response_data['item']['uri'] ?>>♪ <?php echo $response_data['item']['artists'][0]['name'] ?> - <?php echo $response_data['item']['name'] ?></a>
 </body>

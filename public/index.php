@@ -44,6 +44,12 @@ switch ($request) {
     case '/version':
         require __DIR__ . $viewDir . 'version.php';
         break;
+    case '/spotify':
+        require __DIR__ . $viewDir . 'spotify.php';
+        break;
+    case (bool)preg_match('(callback\?\S)', $request):
+        require __DIR__ . $viewDir . 'render.php';
+        break;
     case (bool)preg_match('(\/blog\/\S)', $request):
         $hyphenatedNames = array();
 
