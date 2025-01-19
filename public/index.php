@@ -4,33 +4,42 @@ require dirname(__FILE__, 2) . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
 $dotenv->load();
 
-$connstring = sprintf("host=%s port=%s user=%s password=%s dbname=%s", $_ENV['DB_HOST'], $_ENV['DB_PORT'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-$dbconn = pg_connect($connstring)
-or die('Could not connect: ' . pg_last_error());
-
-$result = pg_query($dbconn, 'SELECT * FROM posts');
-$allPosts = pg_fetch_all($result);
-$postNames = array_column($allPosts, 'title');
-
 $request = $_SERVER['REQUEST_URI'];
-$viewDir = '/views/';
-
 $exploded = explode('/', $request);
 
-function Dehyphenate($string) {
-    return implode(' ', explode('-', $string));
-}
+$viewDir = '/views/';
+$postDir = 'data/posts';
 
-function Hyphenate($string) {
-    return implode("-", explode(' ', strtolower($string)));
-}
+$posts = array();
+$keys = array();
 
-function parseArray(string $output)
-{
-    if ($output === '{}') {
-        return [];
+session_start();
+
+foreach(scandir($postDir) as $post) {
+    if ($post == "." || $post == "..") continue;
+    foreach(scandir("$postDir/$post") as $file) {
+        if ($file == "." || $file == "..") continue;
+        $posts[$post][pathinfo("$postDir/$post/$file")['filename']] = file_get_contents("$postDir/$post/$file");
     }
-    return mb_split(',', mb_substr($output, 1, -1));
+    $keys[] = $post;
+}
+
+$uniqueTags = array();
+
+foreach($posts as $post)
+{
+    $tags = explode(PHP_EOL, $post['tags']);
+
+    foreach($tags as $tag) {
+        if (!in_array($tag, $uniqueTags)) {
+            $uniqueTags["$tag"] = $tag;
+        }
+    }
+}
+
+function Hyphenate($string)
+{
+    return implode("-", explode(' ', strtolower($string)));
 }
 
 switch ($request) {
@@ -44,29 +53,30 @@ switch ($request) {
     case '/version':
         require __DIR__ . $viewDir . 'version.php';
         break;
-    case (bool)preg_match('(\/blog\/\S)', $request):
-        $hyphenatedNames = array();
+    case '/spotify':
+        require __DIR__ . $viewDir . 'spotify.php';
+        break;
+    case (bool)preg_match('(callback\?\S)', $request):
+        require __DIR__ . $viewDir . 'render.php';
+        break;
+    case '/refresh':
+        require __DIR__ . '/functions/refreshToken.php';
+        break;
+    case (bool)preg_match('(\/blog\/tag\/\S)', $request):
+        if (in_array($exploded[3], $uniqueTags)) {
+            $_SESSION['TAG'] = $uniqueTags[$exploded[3]];
 
-        foreach ($postNames as $name) {
-            $hyphenatedNames[] = Hyphenate($name);
+            require __DIR__ . $viewDir . 'tag.php';
+        } else {
+            require __DIR__ . $viewDir . '404.php';
         }
 
-        if (count($hyphenatedNames) > 0 && in_array($exploded[2], $hyphenatedNames)) {
-            $targetKey = 'title';
-            $targetValue = Dehyphenate($exploded[2]);
+        break;
+    case (bool)preg_match('(\/blog\/post\/\S)', $request):
+        if (count($posts) > 0 && in_array($exploded[3], $keys)) {
+            $targetKey = $exploded[3];
 
-            $newPosts = array();
-
-            foreach ($allPosts as $post) {
-                $post[$targetKey] = strtolower($post[$targetKey]);
-                $newPosts[] = $post;
-            }
-
-            $filteredArray = array_filter($newPosts, function($obj) use ($targetKey, $targetValue) {
-                return isset($obj[$targetKey]) && $obj[$targetKey] === $targetValue;
-            });
-
-            $newPost = array_shift($filteredArray);
+            $_SESSION['POST'] = $posts[$targetKey];
 
             require __DIR__ . $viewDir . 'post.php';
         } else {

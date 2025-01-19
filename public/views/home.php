@@ -11,6 +11,5 @@ and photography.</p>
 	<a href="https://open.spotify.com/user/31bgkq6mpcoha246l7rxxpmc3uta?si=5de1f780c2ea45b5">~ Spotify</a>
 <br/>
 <hr>
-<a href="/blog" class="linkback">~ Checkout my blog</a>
 <?php include_once dirname(__FILE__, 2) .'/includes/footer.php'?>
 </html>

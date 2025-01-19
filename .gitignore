@@ -2,3 +2,5 @@
 vendor/
 .env
 Caddyfile
+spotify_key
+refresh_token

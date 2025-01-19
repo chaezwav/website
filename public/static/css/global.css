@@ -61,17 +61,18 @@ blockquote {
 
 h1 {
     font-size: 4rem;
+    font-weight: 900;
 }
 
 h2 {
     font-size: 2rem;
+    font-weight: 600;
     /* font-family: "Excon Bold", "Open Sans", sans-serif !important; */
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
     color: var(--primary-color) !important;
     font-family: var(--font-mono);
-    font-weight: 900;
 }
 
 hr {
@@ -92,8 +93,13 @@ hr {
     transform: translateY(5px) !important;
 }
 
-.profile > .body {
-    line-height: 0.5rem;
+.profile > .body > * {
+    line-height: 1px;
+    padding: 0 !important;
+}
+
+.profile > .body > span > a {
+    color: var(--secondary-color) !important;
 }
 
 /* .latest,

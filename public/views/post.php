@@ -1,11 +1,6 @@
 <?php
 
 $parser = new \cebe\markdown\Markdown();
-
-$query = sprintf("SELECT * FROM posts WHERE title != '%s'", $newPost['title']);
-
-$result = pg_query($dbconn, $query);
-$filteredPosts = pg_fetch_all($result);
 ?>
 
 <!DOCTYPE html>
@@ -13,19 +8,18 @@ $filteredPosts = pg_fetch_all($result);
 <?php include_once dirname(__FILE__, 2) . '/includes/head.php' ?>
 
 <body>
-<a href="/blog" class="linkback">~ Go back</a>
 <div class="blog-page">
     <div class="main-column">
-        <h2>* <?php echo ucwords($newPost['title']); ?></h2>
-        <?php echo $parser->parse($newPost['content']) ?>
+        <h2>* <?php echo $_SESSION['POST']['title']; ?></h2>
+        <?php echo $parser->parse($_SESSION['POST']['content']) ?>
+	    <a href="/blog" class="linkback">← Go back</a>
     </div>
 
     <div class="container">
         <h2>* Metadata</h2>
         <div class="metadata">
-            <p>~ <?php echo $newPost['id'] ?></p>
             <p><?php
-                switch ($newPost['publication_status']) {
+                switch ($_SESSION['POST']['status']) {
                     case 'published':
                         echo '≈';
                         break;
@@ -40,33 +34,36 @@ $filteredPosts = pg_fetch_all($result);
                         break;
                 }
 
-                echo " {$newPost['publication_status']}"
+                echo " {$_SESSION['POST']['status']}"
 
                 ?>
             </p>
 
             <p>
                 ∞ <?php
-                echo $newPost["created_at"]
+                echo $_SESSION['POST']["pub_at"]
 
                 ?>
             </p>
 
 
             <?php
-            foreach (parseArray($newPost['tags']) as $tag) {
-                echo "<p># <a href='/tag?name=$tag'>$tag</a></p>";
+            foreach (explode(PHP_EOL, $_SESSION['POST']['tags']) as $tag) {
+                echo "<p># <a href='/blog/tag/$tag'>$tag</a></p>";
             }
             ?>
 
         </div>
         <h2>* Other Posts</h2>
-        <?php
-        if (count($filteredPosts) > 0) {
-            foreach ($filteredPosts as $post) {
-                $title = Hyphenate($post['title']);
-				$newTitle = ucwords($post['title']);
-                echo "<a href='/blog/{$title}'>~ $newTitle</a><br/>";
+		<?php
+        if (count($posts) > 1) {
+			$filteredPosts = array_filter($posts, function ($post) {
+				return $post != $_SESSION['POST'];
+			});
+
+            foreach ($filteredPosts as $post_slug => $post_data) {
+				$title = $post_data['title'];
+                echo "<a href='/blog/post/{$post_slug}'>~ $title</a><br/>";
             }
         } else {
             echo "<p>~ No other posts</p>";
