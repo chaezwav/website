@@ -17,7 +17,21 @@ $parser = new \cebe\markdown\Markdown();
         <div class="main-column">
             <h2>* Latest Post</h2>
 	        <h3>~ <?php echo $featured_post['title'];?></h3>
-            <?php echo $parser->parse($featured_post['content']) ?>
+            <?php
+            // we don't want new lines in our preview
+            $text_only_spaces = preg_replace('/\s+/', ' ', $featured_post['content']);
+
+            // truncates the text
+            $text_truncated = mb_substr($text_only_spaces, 0, mb_strpos($text_only_spaces, ' ', 250));
+
+            // prevents last word truncation
+            $preview = trim(mb_substr($text_truncated, 0, mb_strrpos($text_truncated, ' '))).'...';
+
+            echo $parser->parse($preview);
+			$slug = "/blog/post/".Hyphenate($featured_post['title']);
+
+            echo "<a class='linkback' href=$slug>→ Continue reading...</a>"
+            ?>
         </div>
 
         <div class="container">

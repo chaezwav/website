@@ -4,3 +4,4 @@ vendor/
 Caddyfile
 spotify_key
 refresh_token
+.DS_Store
