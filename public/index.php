@@ -34,14 +34,9 @@ foreach ($posts as $post) {
 
     foreach ($tags as $tag) {
         if (!in_array($tag, $uniqueTags)) {
-            $uniqueTags["$tag"] = $tag;
+            $uniqueTags[(string) $tag] = $tag;
         }
     }
-}
-
-function Hyphenate($string)
-{
-    return implode("-", explode(' ', strtolower($string)));
 }
 
 switch ($request) {
