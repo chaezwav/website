@@ -23,5 +23,3 @@ or…. 10 years from now. But that’s a future me problem!
 If you’re reading this, I’d like to say thank you for reading my short little blog post. This is the first of (
 hopefully) many in the future, and I can confidently say that today, October 25th, 2024 at 11:39 PM EST, marks the
 beginning of many.
-
-Thank you.

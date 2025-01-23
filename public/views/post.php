@@ -1,77 +1,78 @@
-<?php
-
-$parser = new \cebe\markdown\Markdown();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once dirname(__FILE__, 2) . '/includes/head.php' ?>
+<?php include_once ROOT_DIR . '/public/includes/head.php' ?>
 
 <body>
-<div class="blog-page">
-    <div class="main-column">
-        <h2>* <?php echo $_SESSION['POST']['title']; ?></h2>
-        <?php echo $parser->parse($_SESSION['POST']['content']) ?>
-	    <a href="/blog" class="linkback">← Go back</a>
-    </div>
+    <a href="/blog" class="linkback">← Go back</a>
+    <a style="text-decoration: none !important; color: var(--tertiary-color) !important; cursor: text;"><?php
+    $string = $_SESSION['POST']['status'];
 
-    <div class="container">
-        <h2>* Metadata</h2>
-        <div class="metadata">
-            <p><?php
-                switch ($_SESSION['POST']['status']) {
-                    case 'published':
-                        echo '≈';
-                        break;
-                    case 'unlisted':
-                        echo '~';
-                        break;
-                    case 'draft':
-                        echo '»';
-                        break;
-                    case 'private':
-                        echo '*';
-                        break;
-                }
-
-                echo " {$_SESSION['POST']['status']}"
-
-                ?>
-            </p>
-
-            <p>
-                ∞ <?php
-                echo $_SESSION['POST']["pub_at"]
-
-                ?>
-            </p>
-
-
-            <?php
-            foreach (explode(PHP_EOL, $_SESSION['POST']['tags']) as $tag) {
-                echo "<p># <a href='/blog/tag/$tag'>$tag</a></p>";
-            }
-            ?>
-
+    switch ($string) {
+        case 'unlisted':
+            echo "∆ $string";
+            break;
+        case 'draft':
+            echo "∏ $string";
+            break;
+        case 'private':
+            echo "∇ $string";
+            break;
+        default:
+            echo "";
+            break;
+    } ?>
+    </a>
+    <br>
+    <div class="post">
+        <div class="profile">
+            <div class="body">
+                <span>
+                    <h2><?php echo $_SESSION['POST']['title']; ?><a style="text-decoration: none !important;" href=<?php echo 'https://koehn.lol/blog/' . $_SESSION['POST']['slug'] . '/raw' ?>>˚</a></h2>
+                </span>
+                <span>
+                    <p class="webring">| <?php echo $_SESSION['POST']['description']; ?></p>
+                </span>
+            </div>
         </div>
-        <h2>* Other Posts</h2>
-		<?php
+        <div class="body-content">
+            <?php echo $parser->parse($_SESSION['POST']['content']) ?>
+        </div>
+        <span class="metadata">
+            <p>* * *</p>
+            <br>
+            <p>@ koehn</p>
+            <p>∞ <?php $date = new DateTimeImmutable($_SESSION['POST']["pub_at"]);
+            echo $date->format('Y-m-d') ?></p>
+            <p># <?php
+            foreach (explode(PHP_EOL, $_SESSION['POST']['tags']) as $tag) {
+                echo "<a href='/blog/tag/$tag'>$tag</a>";
+            }
+            ?></p>
+        </span>
+    </div>
+    <h2>Other Posts</h2>
+    <span class="metadata">
+        <?php
         if (count($posts) > 1) {
-			$filteredPosts = array_filter($posts, function ($post) {
-				return $post != $_SESSION['POST'];
-			});
+            $filtered = array_filter($posts, function ($post) {
+                return $post['status'] === 'published';
+            });
+
+            $filteredPosts = array_filter($filtered, function ($post) {
+                return $post != $_SESSION['POST'];
+            });
 
             foreach ($filteredPosts as $post_slug => $post_data) {
-				$title = $post_data['title'];
-                echo "<a href='/blog/post/{$post_slug}'>~ $title</a><br/>";
+                $title = $post_data['title'];
+                $slug = $post_data['slug'];
+                echo "<p><a href='/blog/{$slug}'>~ $title</a></p>";
             }
         } else {
             echo "<p>~ No other posts</p>";
         }
         ?>
-    </div>
-</div>
-<?php include_once dirname(__FILE__, 2) . '/includes/footer.php' ?>
+    </span>
+    <?php include_once ROOT_DIR . '/public/includes/footer.php' ?>
 </body>
 
 </html>

@@ -71,7 +71,7 @@
     <path
        id="rect2"
        d="M 16.998157,2.7270507e-6 H 118.46851 A 16.998154,16.998154 45 0 1 135.46666,16.998157 V 118.46851 a 16.998154,16.998154 135 0 1 -16.99815,16.99815 H 16.998157 A 16.998154,16.998154 45 0 1 2.7270507e-6,118.46851 V 16.998157 A 16.998154,16.998154 135 0 1 16.998157,2.7270507e-6 Z"
-       style="display:inline;fill:#2d292d;fill-opacity:1;stroke-width:0.569111"
+       style="display:none;fill:#2d292d;fill-opacity:1;stroke-width:0.569111"
        inkscape:path-effect="#path-effect7"
        inkscape:original-d="M 2.7270507e-6,2.7270507e-6 H 135.46666 V 135.46666 H 2.7270507e-6 Z"
        inkscape:label="background" />
@@ -83,7 +83,7 @@
     <path
        d="M 76.905597,56.532642 V 25.135399 H 58.56114 V 56.532642 L 28.575009,46.831247 22.930561,64.293759 52.916692,73.995154 34.395846,99.57156 49.212523,110.33129 67.733369,84.931272 86.254215,110.33129 101.07089,99.57156 82.550046,73.995154 112.53618,64.293759 106.89173,46.831247 Z"
        id="text2"
-       style="font-weight:bold;font-size:176.389px;font-family:CommitMono;-inkscape-font-specification:'CommitMono Bold';fill:#f4bbd3;stroke-width:0.264583"
+       style="font-weight:bold;font-size:176.389px;font-family:CommitMono;-inkscape-font-specification:'CommitMono Bold';fill:#ffb3c1;stroke-width:0.264583;fill-opacity:1"
        aria-label="*" />
   </g>
 </svg>

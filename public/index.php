@@ -1,24 +1,28 @@
 <?php
-require dirname(__FILE__, 2) . '/vendor/autoload.php';
+require dirname(__DIR__, 1) . "/private/config.php";
+require ROOT_DIR . "/vendor/autoload.php";
+require ROOT_DIR . "/public/functions/createEmbed.php";
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__, 2));
-$dotenv->load();
+$parser = new \cebe\markdown\Markdown();
 
 $request = $_SERVER['REQUEST_URI'];
 $exploded = explode('/', $request);
 
 $viewDir = '/views/';
 $postDir = 'data/posts';
+$tempDir = 'data/temp';
 
 $posts = array();
 $keys = array();
 
 session_start();
 
-foreach(scandir($postDir) as $post) {
-    if ($post == "." || $post == "..") continue;
-    foreach(scandir("$postDir/$post") as $file) {
-        if ($file == "." || $file == "..") continue;
+foreach (scandir($postDir) as $post) {
+    if ($post == "." || $post == "..")
+        continue;
+    foreach (scandir("$postDir/$post") as $file) {
+        if ($file == "." || $file == "..")
+            continue;
         $posts[$post][pathinfo("$postDir/$post/$file")['filename']] = file_get_contents("$postDir/$post/$file");
     }
     $keys[] = $post;
@@ -26,11 +30,10 @@ foreach(scandir($postDir) as $post) {
 
 $uniqueTags = array();
 
-foreach($posts as $post)
-{
+foreach ($posts as $post) {
     $tags = explode(PHP_EOL, $post['tags']);
 
-    foreach($tags as $tag) {
+    foreach ($tags as $tag) {
         if (!in_array($tag, $uniqueTags)) {
             $uniqueTags["$tag"] = $tag;
         }
@@ -45,24 +48,18 @@ function Hyphenate($string)
 switch ($request) {
     case '':
     case '/':
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         require __DIR__ . $viewDir . 'home.php';
         break;
     case '/blog':
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         require __DIR__ . $viewDir . 'blog.php';
         break;
-    case '/version':
-        require __DIR__ . $viewDir . 'version.php';
-        break;
-    case '/spotify':
-        require __DIR__ . $viewDir . 'spotify.php';
-        break;
-    case (bool)preg_match('(callback\?\S)', $request):
-        require __DIR__ . $viewDir . 'render.php';
-        break;
-    case '/refresh':
-        require __DIR__ . '/functions/refreshToken.php';
-        break;
-    case (bool)preg_match('(\/blog\/tag\/\S)', $request):
+    case (bool) preg_match('(\/blog\/tag\/\S)', $request):
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         if (in_array($exploded[3], $uniqueTags)) {
             $_SESSION['TAG'] = $uniqueTags[$exploded[3]];
 
@@ -72,18 +69,57 @@ switch ($request) {
         }
 
         break;
-    case (bool)preg_match('(\/blog\/post\/\S)', $request):
-        if (count($posts) > 0 && in_array($exploded[3], $keys)) {
-            $targetKey = $exploded[3];
+    case (bool) preg_match('(\/blog\/\S)', $request):
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
+        if (count($posts) > 0 && in_array($exploded[2], $keys)) {
+            $targetKey = $exploded[2];
 
             $_SESSION['POST'] = $posts[$targetKey];
+
+            if (!empty($exploded[3]) && $exploded[3] == 'raw') {
+                echo "<h2>" . $_SESSION['POST']['title'] . "</h2>";
+                echo "<p>" . $_SESSION['POST']['description'] . "</p>";
+                echo "<p>" . $parser->parse($_SESSION['POST']['content']) . "</p>";
+                break;
+            } else if (!empty($exploded[3])) {
+                header("Location: /blog/$exploded[2]");
+            }
 
             require __DIR__ . $viewDir . 'post.php';
         } else {
             require __DIR__ . $viewDir . '404.php';
         }
         break;
+    case (bool) preg_match('(\/tmp\/\S)', $request):
+        $files = [];
+
+        foreach (scandir($tempDir) as $script) {
+            if ($script == "." || $script == "..")
+                continue;
+            $files[] = $script;
+        }
+
+
+        if (count($files) > 0 && in_array($exploded[2], $files)) {
+            $targetKey = $exploded[2];
+
+            require __DIR__ . $viewDir . 'tmp.php';
+        } else {
+            require __DIR__ . $viewDir . '404.php';
+        }
+        break;
+    case "/feed.xml":
+        require __DIR__ . $viewDir . 'rss.php';
+        break;
+    case "/listening":
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
+        require __DIR__ . $viewDir . 'listening.php';
+        break;
     default:
+        echo "<head><script defer src='https://monitor.koehn.lol/script.js'
+		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         http_response_code(404);
         require __DIR__ . $viewDir . '404.php';
 }
