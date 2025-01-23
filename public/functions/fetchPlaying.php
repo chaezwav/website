@@ -41,13 +41,11 @@ $other_songs = array_slice(json_decode($recents, true)["recenttracks"]["track"],
 
 if (empty($parsed_recents["@attr"])) {
 	$string = "nothing";
-	$uri = "/";
 	$status = "false";
 } else {
 	$title = $parsed_recents["name"];
 	$artist = $parsed_recents["artist"]["#text"];
 	$string = "$artist - $title";
-	$uri = $parsed_recents['url'];
 	$status = $parsed_recents["@attr"]["nowplaying"];
 }
 
@@ -71,6 +69,6 @@ foreach ($other_songs as $track) {
 $final_recents = implode(", ", $recents);
 
 $file = ROOT_DIR . "/public/data/api/playing.json";
-$final = "{ \"url\": \"$uri\", \"status\": $status, \"string\": \"$string\", \"recents\": [$final_recents] }";
+$final = "{ \"status\": $status, \"string\": \"$string\", \"recents\": [$final_recents] }";
 
 file_put_contents($file, $final);

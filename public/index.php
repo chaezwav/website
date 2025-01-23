@@ -1,7 +1,6 @@
 <?php
 require dirname(__DIR__, 1) . "/private/config.php";
 require ROOT_DIR . "/vendor/autoload.php";
-require ROOT_DIR . "/public/functions/createEmbed.php";
 
 $parser = new \cebe\markdown\Markdown();
 
@@ -12,8 +11,8 @@ $viewDir = '/views/';
 $postDir = 'data/posts';
 $tempDir = 'data/temp';
 
-$posts = array();
-$keys = array();
+$posts = [];
+$keys = [];
 
 session_start();
 
@@ -28,7 +27,7 @@ foreach (scandir($postDir) as $post) {
     $keys[] = $post;
 }
 
-$uniqueTags = array();
+$uniqueTags = [];
 
 foreach ($posts as $post) {
     $tags = explode(PHP_EOL, $post['tags']);
@@ -57,11 +56,11 @@ switch ($request) {
 		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         require __DIR__ . $viewDir . 'blog.php';
         break;
-    case (bool) preg_match('(\/blog\/tag\/\S)', $request):
+    case (bool) preg_match('(\/tag\/\S)', $request):
         echo "<head><script defer src='https://monitor.koehn.lol/script.js'
 		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
-        if (in_array($exploded[3], $uniqueTags)) {
-            $_SESSION['TAG'] = $uniqueTags[$exploded[3]];
+        if (in_array($exploded[2], $uniqueTags)) {
+            $_SESSION['TAG'] = $uniqueTags[$exploded[2]];
 
             require __DIR__ . $viewDir . 'tag.php';
         } else {
@@ -69,7 +68,7 @@ switch ($request) {
         }
 
         break;
-    case (bool) preg_match('(\/blog\/\S)', $request):
+    case (bool) preg_match('(\/post\/\S)', $request):
         echo "<head><script defer src='https://monitor.koehn.lol/script.js'
 		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script></head>";
         if (count($posts) > 0 && in_array($exploded[2], $keys)) {
@@ -83,7 +82,7 @@ switch ($request) {
                 echo "<p>" . $parser->parse($_SESSION['POST']['content']) . "</p>";
                 break;
             } else if (!empty($exploded[3])) {
-                header("Location: /blog/$exploded[2]");
+                header("Location: /post/$exploded[2]");
             }
 
             require __DIR__ . $viewDir . 'post.php';

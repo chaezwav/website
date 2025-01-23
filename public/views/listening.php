@@ -5,6 +5,12 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/public/data/api/playing.js
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once ROOT_DIR . '/public/includes/head.php' ?>
+
+<head>
+    <meta property="og:title" content="Koehn @ Listening">
+    <meta property="og:url" content="https://koehn.lol/listening">
+    <title>Koehn @ Listening</title>
+</head>
 <div class="body">
     <h2>@ What am I listening to as of late?</h2>
     <?php

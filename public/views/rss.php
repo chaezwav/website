@@ -21,8 +21,8 @@ $filteredPosts = array_filter($posts, function ($post) {
 foreach ($filteredPosts as $post_slug => $post_data) {
     echo <<<XML
         <entry>
-            <link rel='alternate' type='text/html' href="https://koehn.lol/blog/$post_data[slug]"/>
-            <id>https://koehn.lol/blog/$post_data[slug]</id>
+            <link rel='alternate' type='text/html' href="https://koehn.lol/post/$post_data[slug]"/>
+            <id>https://koehn.lol/post/$post_data[slug]</id>
             <title>$post_data[title]</title>
             <published>$post_data[pub_at]</published>
             <updated>$post_data[upd_at]</updated>

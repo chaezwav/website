@@ -101,6 +101,12 @@ hr {
     gap: 15px;
 }
 
+/* div.post {
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1em;
+} */
+
 a {
     color: var(--primary-color) !important;
     text-decoration: none;

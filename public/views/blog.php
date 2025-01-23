@@ -16,6 +16,12 @@ $featured_post = reset($filtered);
 <html lang="en">
 <?php include_once ROOT_DIR . '/public/includes/head.php' ?>
 
+<head>
+    <meta property="og:title" content="Koehn @ Blog">
+    <meta property="og:url" content="https://koehn.lol/blog">
+    <title>Koehn @ Blog</title>
+</head>
+
 <body>
     <div class="blog-page">
         <div class="main-column">
@@ -34,7 +40,7 @@ $featured_post = reset($filtered);
             $preview = trim(mb_substr($text_truncated, 0, mb_strrpos($text_truncated, ' '))) . '...';
 
             echo $parser->parse($preview);
-            $slug = "/blog/" . $featured_post['slug'];
+            $slug = "/post/" . $featured_post['slug'];
             echo "<br>";
             echo "<a class='linkback' href=$slug>→ Continue reading...</a>"
                 ?>
@@ -55,7 +61,7 @@ $featured_post = reset($filtered);
 
                     $formatted = $date->format('Y-m-d');
                     echo "<div class='metadata'>";
-                    echo "<p><a href='/blog/{$slug}'>~ $title</a></p>";
+                    echo "<p><a href='/post/{$slug}'>~ $title</a></p>";
                     echo "<p class='webring'>$formatted</p>";
                     echo "</div>";
                 }
@@ -67,7 +73,7 @@ $featured_post = reset($filtered);
             <?php
             foreach ($uniqueTags as $tag) {
                 $title = $tag;
-                echo "<a href='/blog/tag/{$tag}'># $title</a><br/>";
+                echo "<a href='/tag/{$tag}'># $title</a><br/>";
             }
             ?>
         </div>

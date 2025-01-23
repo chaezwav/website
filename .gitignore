@@ -1,7 +1,5 @@
-.idea
 vendor/
-.env
-Caddyfile
-spotify_key
-refresh_token
+private/*
 .DS_Store
+Caddyfile
+public/data/api/*

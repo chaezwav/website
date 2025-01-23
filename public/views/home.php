@@ -4,6 +4,9 @@
 
 <head>
     <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <meta property="og:title" content="Koehn Humphries">
+    <meta property="og:url" content="https://koehn.lol/">
+    <title>Koehn Humphries</title>
 </head>
 <div class="body">
     <h2>@ Hello, I'm Koehn</h2>
