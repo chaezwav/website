@@ -3,3 +3,4 @@ private/*
 .DS_Store
 Caddyfile
 public/data/api/*
+public/data/temp/*
