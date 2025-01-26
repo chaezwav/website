@@ -1,4 +1,4 @@
 <?php
-include ROOT_DIR . "/public/data/temp/$targetKey";
+include ROOT_DIR . "/public/temp/$targetKey";
 echo "<hr>";
-highlight_file(ROOT_DIR . "/public/data/temp/$targetKey");
+highlight_file(ROOT_DIR . "/public/temp/$targetKey");

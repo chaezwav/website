@@ -22,7 +22,7 @@ $filtered = array_filter($posts, function ($post) {
             <h2># <?php echo $_SESSION['TAG']; ?></h2>
             <?php
             $filteredPosts = array_filter($filtered, function ($post) use ($tag) {
-                return in_array($tag, explode(PHP_EOL, $post['tags']));
+                return in_array($tag, $post['tags']);
             });
 
             if (!empty($filteredPosts)) {
@@ -38,7 +38,7 @@ $filtered = array_filter($posts, function ($post) {
             <a href="/blog" class="linkback">← Go back</a>
         </div>
         <div class="container">
-            <h2>* Other Tags</h2>
+            <h2>> Other Tags</h2>
             <?php
             $filteredTags = array_filter($uniqueTags, function ($localTag) use ($tag) {
                 return $localTag != $tag;

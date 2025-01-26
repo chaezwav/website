@@ -33,8 +33,8 @@ foreach ($parsed_likes as $track) {
 
 $formatted_loved = implode(PHP_EOL, $loved_urls);
 
-if ($formatted_loved !== file_get_contents(ROOT_DIR . "/public/data/api/lovedtracks.txt")) {
-	file_put_contents(ROOT_DIR . "/public/data/api/lovedtracks.txt", $formatted_loved);
+if ($formatted_loved !== file_get_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt")) {
+	file_put_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt", $formatted_loved);
 }
 
 $other_songs = array_slice(json_decode($recents, true)["recenttracks"]["track"], 0, 10);
@@ -52,7 +52,7 @@ if (empty($parsed_recents["@attr"])) {
 $recents = [];
 $likes = [];
 
-$parsedLikes = explode(PHP_EOL, file_get_contents(ROOT_DIR . "/public/data/api/lovedtracks.txt"));
+$parsedLikes = explode(PHP_EOL, file_get_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt"));
 foreach ($parsedLikes as $like) {
 	$likes[$like] = $like;
 }
@@ -68,7 +68,7 @@ foreach ($other_songs as $track) {
 
 $final_recents = implode(", ", $recents);
 
-$file = ROOT_DIR . "/public/data/api/playing.json";
+$file = ROOT_DIR . "/private/data/api/playing.json";
 $final = "{ \"status\": $status, \"string\": \"$string\", \"recents\": [$final_recents] }";
 
 file_put_contents($file, $final);

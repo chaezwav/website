@@ -1,20 +1,20 @@
 @font-face {
     font-family: "Vercetti";
-    src: url("../fonts/Vercetti/Vercetti-Regular.woff2") format("woff2");
+    src: url("../fonts/Vercetti-Regular.woff2") format("woff2");
     font-display: swap;
 }
 
 
 @font-face {
     font-family: "Commit Mono";
-    src: url('../fonts/CommitMono/CommitMono\ VariableFont.woff2') format('woff2 supports variations');
+    src: url('../fonts/CommitMono\ VariableFont.woff2') format('woff2 supports variations');
     font-feature-settings: "'ss03' on, 'ss04' on, 'ss05' on";
     font-display: swap;
 }
 
 :root {
-    --font: "Vercetti", serif;
-    --font-mono: "Commit Mono", monospace;
+    --font: -apple-system, "Vercetti", serif;
+    --font-mono: "Osaka-Mono", "Commit Mono", monospace;
     --primary-color: #FFB3C1;
     --secondary-color: #FFF;
     --tertiary-color: #7F848E;
@@ -47,6 +47,11 @@
         font-size: 2em !important;
         max-width: min-content !important;
     }
+
+    .container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
 }
 
 body {
@@ -74,8 +79,13 @@ h1 {
 
 h2 {
     /* font-size: 2rem; */
-    font-weight: 600;
+    font-weight: 700;
     /* font-family: "Excon Bold", "Open Sans", sans-serif !important; */
+}
+
+h3 {
+    /* font-size: 1.5rem; */
+    font-weight: 500;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -107,10 +117,69 @@ hr {
     padding: 1em;
 } */
 
+.pill:hover,
+.pill.highlighted {
+    background-color: var(--primary-color) !important;
+    color: var(--background-color) !important;
+
+    a {
+        color: var(--background-color) !important;
+    }
+}
+
+.mentions-section {
+    margin-top: 1rem;
+    border-top: 1px solid var(--tertiary-color);
+}
+
+.profile.mention {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--tertiary-color);
+}
+
+.profile.mention:last-child {
+    margin-bottom: 0;
+}
+
+.profile.mention .body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    /* Reduce this value to bring elements closer together */
+}
+
+.profile.mention .body span {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.profile.mention .body p {
+    margin: 0;
+    padding: 0;
+}
+
+.profile.mention .body {
+    width: 100%;
+}
+
+.pill {
+    /* background-color: var(--primary-color) !important; */
+    color: var(--primary-color) !important;
+    padding: 0.2em 0.5em !important;
+    border-radius: 30px !important;
+    display: inline-block !important;
+    width: fit-content !important;
+
+    border: 2px solid var(--primary-color) !important;
+    text-decoration: none !important;
+    cursor: auto;
+}
+
 a {
     color: var(--primary-color) !important;
     text-decoration: none;
-    padding: 0.1rem 0.2rem;
     font-weight: 500;
     font-family: var(--font-mono) !important;
 }
@@ -121,6 +190,20 @@ a:hover {
     text-decoration: underline;
     text-decoration-style: wavy;
     -webkit-text-decoration-style: wavy;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.post-header :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0;
+}
+
+.post-header p {
+    margin: 0;
 }
 
 .profile {
@@ -140,7 +223,11 @@ a:hover {
 .profile :is(h1, h2, h3, h4, h5, h6) {
     margin: 0;
     padding: 0;
-    line-height: 1;
+    line-height: 1.5 !important;
+}
+
+.profile p {
+    font-size: 1.5rem !important;
 }
 
 .profile .body span .item {
@@ -187,10 +274,29 @@ p {
 }
 
 .metadata {
-    /*font-size: 1rem;*/
     color: var(--primary-color);
-    line-height: 0.5rem;
     font-family: var(--font-mono);
+    line-height: 1.2 !important;
+}
+
+.metadata p {
+    margin: 0;
+    padding: 2px 0;
+
+    a {
+        vertical-align: middle;
+    }
+
+    i {
+        font-size: 1rem;
+        vertical-align: middle;
+    }
+}
+
+.metadata .tags {
+    display: inline-flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 footer {
@@ -241,5 +347,7 @@ a.linkback:hover {
 }
 
 .container {
-    text-wrap: nowrap;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 2rem;
 }
