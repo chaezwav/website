@@ -7,9 +7,9 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 <head>
 	<meta name="description" content="A personal journey. @koehn@social.lol">
 	<link rel="stylesheet" href="/static/css/global.css">
-	<link rel="apple-touch-icon" href="/static/assets/favicon.png">
+	<link rel="apple-touch-icon" href="/static/assets/<?php echo CHANNEL ?>.png">
 	<link rel="icon" type="image/png"
-		href="/static/assets/favicon.png?v=<?php echo md5_file(ROOT_DIR . '/static/assets/favicon.png') ?>" />
+		href="/static/assets/<?php echo CHANNEL ?>-favicon.png?v=<?php echo md5_file(ROOT_DIR . "/static/assets/{CHANNEL}-favicon.png") ?>" />
 	<meta name="fediverse:creator" content="@koehn@social.lol" />
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="A personal journey. @koehn@social.lol">

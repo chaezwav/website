@@ -6,15 +6,14 @@
 
 
 @font-face {
-    font-family: "Commit Mono";
-    src: url('../fonts/CommitMono\ VariableFont.woff2') format('woff2 supports variations');
-    font-feature-settings: "'ss03' on, 'ss04' on, 'ss05' on";
+    font-family: "Moralerspace";
+    src: url('../fonts/MoralerspaceArgon-Bold.ttf') format('woff2 supports variations');
     font-display: swap;
 }
 
 :root {
-    --font: -apple-system, "Vercetti", serif;
-    --font-mono: "Osaka-Mono", "Commit Mono", monospace;
+    --font: "Vercetti", -apple-system, serif;
+    --font-mono: "Moralerspace", "Osaka-Mono" monospace;
     --primary-color: var(--arc-palette-foregroundSecondary, #fcbbce);
     --secondary-color: var(--arc-palette-title, #fce9e9);
     --tertiary-color: var(--arc-palette-subtitle, #8e7f87);

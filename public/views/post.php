@@ -30,14 +30,11 @@
                 <div class="profile">
                     <div class="body">
                         <br>
-                        <span>
+                        <div class="post-header">
                             <h2><?php echo $_SESSION['POST']['title']; ?><a style="text-decoration: none !important;"
-                                    href=<?php echo 'https://koehn.lol/post/' . $_SESSION['POST']['slug'] . '/raw' ?>>˚</a>
-                            </h2>
-                        </span>
-                        <span>
+                                    href=<?php echo 'https://koehn.lol/post/' . $_SESSION['POST']['slug'] . '/raw' ?>>˚</a></h2>
                             <p class="webring">| <?php echo $_SESSION['POST']['description']; ?></p>
-                        </span>
+                        </div>
                     </div>
                 </div>
 

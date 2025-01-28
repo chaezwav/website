@@ -2,8 +2,8 @@
 
 $title = "Hi!!";
 $content = "I'm a cool image generator!";
-$regular_font = '/var/www/koehn.lol/public/static/fonts/Vercetti-Regular.ttf';
-$bold_font = '/var/www/koehn.lol/public/static/fonts/Menlo-Regular.ttf';
+$regular_font = '/var/www/dev.koehn.lol/public/static/fonts/Vercetti-Regular.ttf';
+$bold_font = '/var/www/dev.koehn.lol/public/static/fonts/MoralerspaceArgon-Bold.ttf';
 
 $img = imagecreatetruecolor(1200, 630);
 $pink = imagecolorallocate($img, 255, 179, 193);

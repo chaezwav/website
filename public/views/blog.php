@@ -49,7 +49,6 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
 
             echo $parser->parse($preview);
             $slug = "/post/" . $featured_post['slug'];
-            echo "<br>";
             echo "<a class='linkback' href=$slug><i class='fa-solid fa-right-long'></i> Continue reading...</a>"
                 ?>
         </div>
