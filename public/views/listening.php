@@ -18,7 +18,7 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 
     $recent_liked = $most_recent["liked"] ? ' <i class="fa-solid fa-heart"></i>' : " ";
 
-    echo "<span style='color: var(--primary-color) !important;'><i class='fa-solid fa-music'></i>$recent_liked <a href='$most_recent[url]'>$most_recent[artist] - $most_recent[title]</a></span></br><hr>";
+    echo "<span class='pill highlighted'>$recent_liked <a href='$most_recent[url]'>$most_recent[artist] - $most_recent[title]</a></span></br><hr>";
     ;
 
     foreach (array_slice($playing["recents"], 1, 10) as $track) {
@@ -26,7 +26,7 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
         $artist = $track["artist"];
         $url = $track["url"];
         $liked = $track["liked"] ? ' <i class="fa-solid fa-heart"></i>' : " ";
-        echo "<span style='color: var(--spotify-color) !important'><i class='fa-solid fa-music'></i>$liked <a style='color: var(--spotify-color) !important' href='$url'>$artist - $title</a></span></br>";
+        echo "<span style='color: var(--spotify-color) !important'>$liked <a style='color: var(--spotify-color) !important' href='$url'>$artist - $title</a></span></br>";
     }
     ?>
     <br>

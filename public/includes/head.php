@@ -19,11 +19,16 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 	<script defer src='https://monitor.koehn.lol/script.js'
 		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script>
 	<script src="https://kit.fontawesome.com/4c53100ac3.js" crossorigin="anonymous"></script>
-	<link rel="webmention" href="https://webmention.io/koehn.lol/webmention" />
-	<link rel="pingback" href="https://webmention.io/mxb.dev/xmlrpc">
 </head>
 
 <body>
+	<?php if (CHANNEL == 'dev'): ?>
+		<div class="alert">
+			<p><i class="fa-solid fa-triangle-exclamation"></i> You're viewing the development build. Expect bugs. Checkout
+				the normal channel here: <a href="https://koehn.lol">https://koehn.lol</a></p>
+		</div>
+	<?php endif; ?>
+
 	<div class="h-card">
 		<div class="profile">
 			<div class="body">
@@ -44,9 +49,6 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 					<a href="https://social.lol/@koehn" class="u-url item" rel="me">@mastodon</a>
 					<a href="https://open.spotify.com/user/31bgkq6mpcoha246l7rxxpmc3uta?si=5de1f780c2ea45b5"
 						class="u-url item" rel="me">@spotify</a>
-				</span>
-				<span>
-					<a class="webring" href=<?php echo $status["url"] ?>><?php echo $status["string"] ?></a>
 				</span>
 			</div>
 		</div>

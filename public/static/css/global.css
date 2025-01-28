@@ -15,11 +15,12 @@
 :root {
     --font: -apple-system, "Vercetti", serif;
     --font-mono: "Osaka-Mono", "Commit Mono", monospace;
-    --primary-color: #FFB3C1;
-    --secondary-color: #FFF;
-    --tertiary-color: #7F848E;
-    --background-color: #101010;
-    --spotify-color: #99FFE4;
+    --primary-color: var(--arc-palette-foregroundSecondary, #fcbbce);
+    --secondary-color: var(--arc-palette-title, #fce9e9);
+    --tertiary-color: var(--arc-palette-subtitle, #8e7f87);
+    --background-color: var(--arc-palette-background, #101010);
+    --spotify-color: var(--arc-palette-maxContrastColor, #7BE17D);
+    --warning-color: var(--arc-background-simple-color, #ffd862);
 }
 
 @media screen and (max-width: 1030px) {
@@ -178,7 +179,7 @@ hr {
 }
 
 a {
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
     font-family: var(--font-mono) !important;
@@ -242,8 +243,16 @@ a:hover {
     font-family: var(--font-mono) !important;
 }
 
-p {
-    margin-bottom: 5px;
+.alert p {
+    background-color: var(--warning-color);
+    color: var(--background-color);
+    border-radius: 8px;
+    padding: 1em;
+
+    a {
+        color: var(--background-color);
+        font-weight: bold;
+    }
 }
 
 .label {

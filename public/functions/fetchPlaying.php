@@ -42,11 +42,13 @@ $other_songs = array_slice(json_decode($recents, true)["recenttracks"]["track"],
 if (empty($parsed_recents["@attr"])) {
 	$string = "nothing";
 	$status = "false";
+	$image = "false";
 } else {
 	$title = $parsed_recents["name"];
 	$artist = $parsed_recents["artist"]["#text"];
 	$string = "$artist - $title";
 	$status = $parsed_recents["@attr"]["nowplaying"];
+	$image = $track["image"][0]["#text"];
 }
 
 $recents = [];
@@ -62,13 +64,14 @@ foreach ($other_songs as $track) {
 	$recentTrack = $track["name"];
 	$recentArtis = $track["artist"]["#text"];
 	$recentUrl = $track["url"];
-	$recent = "{ \"title\": \"$recentTrack\", \"artist\": \"$recentArtis\", \"url\": \"$recentUrl\", \"liked\": $liked }";
+	$recentImage = $track["image"][0]["#text"];
+	$recent = "{ \"title\": \"$recentTrack\", \"artist\": \"$recentArtis\", \"url\": \"$recentUrl\", \"image\": \"$recentImage\", \"liked\": $liked }";
 	array_push($recents, $recent);
 }
 
 $final_recents = implode(", ", $recents);
 
 $file = ROOT_DIR . "/private/data/api/playing.json";
-$final = "{ \"status\": $status, \"string\": \"$string\", \"recents\": [$final_recents] }";
+$final = "{ \"status\": $status, \"string\": \"$string\", \"image\": \"$image\", \"recents\": [$final_recents] }";
 
 file_put_contents($file, $final);

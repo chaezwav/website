@@ -1,34 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once ROOT_DIR . '/public/includes/head.php'; ?>
-<?php
-$mentions = file_get_contents(ROOT_DIR . "/private/data/api/mentions.json");
-$parsed = json_decode($mentions, true);
-
-$likes = array_values(array_filter($parsed, function ($mention) {
-    return $mention == "likes";
-}, ARRAY_FILTER_USE_KEY))[0]["https://koehn.lol/post/{$_SESSION['POST']['slug']}"];
-
-if (empty($likes)) {
-    $likes = [];
-}
-
-$reposts = array_values(array_filter($parsed, function ($mention) {
-    return $mention == "reposts";
-}, ARRAY_FILTER_USE_KEY))[0]["https://koehn.lol/post/{$_SESSION['POST']['slug']}"];
-
-if (empty($reposts)) {
-    $reposts = [];
-}
-
-$replies = array_values(array_filter($parsed, function ($mention) {
-    return $mention == "replies";
-}, ARRAY_FILTER_USE_KEY))[0]["https://koehn.lol/post/{$_SESSION['POST']['slug']}"];
-
-if (empty($replies)) {
-    $replies = [];
-}
-?>
 
 <head>
     <meta property="og:title" content="Koehn @ <?php echo $_SESSION['POST']['title']; ?>">
@@ -73,31 +45,7 @@ if (empty($replies)) {
                     <?php echo $parser->parse($_SESSION['POST']['content']) ?>
                 </div>
             </article>
-            <br>
-            <span style='display: flex; gap: 1rem;'>
-                <a class="pill highlighted"><i class='fa-solid fa-heart'></i>
-                    <?php echo count(array_values($likes)) ?></a>
-                <a class='pill highlighted'><i class='fa-solid fa-repeat'></i>
-                    <?php echo count(array_values($reposts)) ?></a>
-                <a class='pill' href="/feed.xml"><i class='fa-solid fa-feed'></i></a>
-            </span>
-            <?php
-
-            if (count($replies) > 0) {
-                echo "<div class='mentions-section'>";
-                foreach ($replies[0] as $reply) {
-                    echo "<div class='profile mention'>";
-                    echo "<div class='body'>";
-                    echo "<span style='display: flex; gap: 1rem;'><img width=30 height=30 src='{$reply['author']['photo']}'/><h3>{$reply['author']['name']}</h3></span>";
-                    echo "<span><p>{$reply['content']['text']}</p></span>";
-                    echo "</div>";
-                    echo "</div>";
-                }
-                echo "</div>";
-            }
-            ?>
         </div>
-
 
         <div class="sidebar">
             <h2>Metadata</h2>

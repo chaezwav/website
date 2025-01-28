@@ -98,6 +98,9 @@ switch ($request) {
     case "/listening":
         require __DIR__ . $viewDir . 'listening.php';
         break;
+    case "/note":
+        echo "parked";
+        break;
     default:
         http_response_code(404);
         require __DIR__ . $viewDir . '404.php';
