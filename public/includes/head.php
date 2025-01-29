@@ -1,15 +1,19 @@
 <?php
 
-$status = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/status.json"), true);
-$playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.json"), true);
-?>
+// $status = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/status.json"), true);
+$playing = json_decode(
+    file_get_contents(ROOT_DIR . "/private/data/api/playing.json"),
+    true
+); ?>
 
 <head>
 	<meta name="description" content="A personal journey. @koehn@social.lol">
 	<link rel="stylesheet" href="/static/css/global.css">
-	<link rel="apple-touch-icon" href="/static/assets/<?php echo CHANNEL ?>.png">
+	<link rel="apple-touch-icon" href="/static/assets/<?php echo CHANNEL; ?>.png">
 	<link rel="icon" type="image/png"
-		href="/static/assets/<?php echo CHANNEL ?>-favicon.png?v=<?php echo md5_file(ROOT_DIR . "/static/assets/{CHANNEL}-favicon.png") ?>" />
+		href="/static/assets/<?php echo CHANNEL; ?>-favicon.png?v=<?php echo md5_file(
+    ROOT_DIR . "/static/assets/{CHANNEL}-favicon.png"
+); ?>" />
 	<meta name="fediverse:creator" content="@koehn@social.lol" />
 	<meta property="og:type" content="website">
 	<meta property="og:description" content="A personal journey. @koehn@social.lol">
@@ -17,12 +21,12 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#101010">
 	<script defer src='https://monitor.koehn.lol/script.js'
-		data-website-id='9d5f0600-18f9-4478-80eb-fb9f840e0c0d'></script>
+		data-website-id=<?php echo TRACKING_ID; ?>>></script>
 	<script src="https://kit.fontawesome.com/4c53100ac3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<?php if (CHANNEL == 'dev'): ?>
+	<?php if (CHANNEL == "dev"): ?>
 		<div class="alert">
 			<p><i class="fa-solid fa-triangle-exclamation"></i> You're viewing the development build. Expect bugs. Checkout
 				the normal channel here: <a href="https://koehn.lol">https://koehn.lol</a></p>
@@ -33,10 +37,14 @@ $playing = json_decode(file_get_contents(ROOT_DIR . "/private/data/api/playing.j
 		<div class="profile">
 			<div class="body">
 				<span
-					style="color: <?php echo $playing['status'] ? 'var(--spotify-color)' : 'var(--tertiary-color)' ?> !important;"><i
+					style="color: <?php echo $playing["status"]
+         ? "var(--alt-color)"
+         : "var(--tertiary-color)"; ?> !important;"><i
 						class="fa-solid fa-headphones"></i> <a
-						style="color: <?php echo $playing['status'] ? 'var(--spotify-color)' : 'var(--tertiary-color)' ?> !important;"
-						class="webring" href="/listening"><?php echo $playing['string'] ?>
+						style="color: <?php echo $playing["status"]
+          ? "var(--alt-color)"
+          : "var(--tertiary-color)"; ?> !important;"
+						class="webring" href="/listening"><?php echo $playing["string"]; ?>
 					</a></span>
 				<span>
 					<a class="u-url u-uid" style="display: none;" href="/">

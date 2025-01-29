@@ -4,22 +4,22 @@
     font-display: swap;
 }
 
-
 @font-face {
     font-family: "Moralerspace";
-    src: url('../fonts/MoralerspaceArgon-Bold.ttf') format('woff2 supports variations');
+    src: url("../fonts/MoralerspaceArgon-Bold.ttf")
+        format("woff2 supports variations");
     font-display: swap;
 }
 
 :root {
     --font: "Vercetti", -apple-system, serif;
     --font-mono: "Moralerspace", "Osaka-Mono" monospace;
-    --primary-color: var(--arc-palette-foregroundSecondary, #fcbbce);
-    --secondary-color: var(--arc-palette-title, #fce9e9);
+    --primary-color: var(--arc-palette-foregroundSecondary, #faa2c1);
+    --secondary-color: var(--arc-palette-title, #ffdeeb);
     --tertiary-color: var(--arc-palette-subtitle, #8e7f87);
     --background-color: var(--arc-palette-background, #101010);
-    --spotify-color: var(--arc-palette-maxContrastColor, #7BE17D);
-    --warning-color: var(--arc-background-simple-color, #ffd862);
+    --alt-color: var(--arc-palette-maxContrastColor, #b2f2bb);
+    --warning-color: var(--arc-background-simple-color, #ffe066);
 }
 
 @media screen and (max-width: 1030px) {
@@ -264,9 +264,8 @@ a:hover {
 .date {
     color: var(--tertiary-color);
     font-family: var(--font-mono);
-    display: inline
+    display: inline;
 }
-
 
 .banner p {
     display: flex;
@@ -338,7 +337,7 @@ a.linkback:hover {
     background-color: var(--background-color);
 }
 
-.metafields>.items {
+.metafields > .items {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -350,7 +349,7 @@ a.linkback:hover {
     gap: 1em;
 }
 
-.blog-page>.main-column {
+.blog-page > .main-column {
     flex: 0 0 70%;
 }
 

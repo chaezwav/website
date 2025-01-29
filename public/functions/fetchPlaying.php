@@ -2,8 +2,12 @@
 require dirname(__DIR__, 2) . "/private/config.php";
 
 $key = LASTFM_API_KEY;
-$ch_1 = curl_init("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=chaezwav&api_key={$key}&format=json");
-$ch_2 = curl_init("https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=chaezwav&api_key={$key}&format=json");
+$ch_1 = curl_init(
+    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=chaezwav&api_key={$key}&format=json"
+);
+$ch_2 = curl_init(
+    "https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=chaezwav&api_key={$key}&format=json"
+);
 curl_setopt($ch_1, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch_2, CURLOPT_RETURNTRANSFER, true);
 
@@ -13,7 +17,7 @@ curl_multi_add_handle($mh, $ch_2);
 
 $running = null;
 do {
-	curl_multi_exec($mh, $running);
+    curl_multi_exec($mh, $running);
 } while ($running);
 
 curl_multi_remove_handle($mh, $ch_1);
@@ -28,45 +32,53 @@ $parsed_likes = json_decode($likes, true)["lovedtracks"]["track"];
 
 $loved_urls = [];
 foreach ($parsed_likes as $track) {
-	$loved_urls[] = $track["url"];
+    $loved_urls[] = $track["url"];
 }
 
 $formatted_loved = implode(PHP_EOL, $loved_urls);
 
-if ($formatted_loved !== file_get_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt")) {
-	file_put_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt", $formatted_loved);
-}
+file_put_contents(
+    ROOT_DIR . "/private/data/api/lovedtracks.txt",
+    $formatted_loved
+);
 
-$other_songs = array_slice(json_decode($recents, true)["recenttracks"]["track"], 0, 10);
+$other_songs = array_slice(
+    json_decode($recents, true)["recenttracks"]["track"],
+    0,
+    10
+);
 
 if (empty($parsed_recents["@attr"])) {
-	$string = "nothing";
-	$status = "false";
-	$image = "false";
+    $string = "nothing";
+    $status = "false";
+    $image = "false";
 } else {
-	$title = $parsed_recents["name"];
-	$artist = $parsed_recents["artist"]["#text"];
-	$string = "$artist - $title";
-	$status = $parsed_recents["@attr"]["nowplaying"];
-	$image = $track["image"][0]["#text"];
+    $title = $parsed_recents["name"];
+    $artist = $parsed_recents["artist"]["#text"];
+    $string = "$artist - $title";
+    $status = $parsed_recents["@attr"]["nowplaying"];
+    $image = $track["image"][0]["#text"];
 }
 
 $recents = [];
 $likes = [];
 
-$parsedLikes = explode(PHP_EOL, file_get_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt"));
+$parsedLikes = explode(
+    PHP_EOL,
+    file_get_contents(ROOT_DIR . "/private/data/api/lovedtracks.txt")
+);
 foreach ($parsedLikes as $like) {
-	$likes[$like] = $like;
+    $likes[$like] = $like;
 }
 
 foreach ($other_songs as $track) {
-	$liked = (in_array($track["url"], $likes)) ? "true" : "false";
-	$recentTrack = $track["name"];
-	$recentArtis = $track["artist"]["#text"];
-	$recentUrl = $track["url"];
-	$recentImage = $track["image"][0]["#text"];
-	$recent = "{ \"title\": \"$recentTrack\", \"artist\": \"$recentArtis\", \"url\": \"$recentUrl\", \"image\": \"$recentImage\", \"liked\": $liked }";
-	array_push($recents, $recent);
+    $liked = in_array($track["url"], $likes) ? "true" : "false";
+    $recentTrack = $track["name"];
+    $recentArtis = $track["artist"]["#text"];
+    $recentUrl = $track["url"];
+    $recentImage = $track["image"][0]["#text"];
+    $recent = "{ \"title\": \"$recentTrack\", \"artist\": \"$recentArtis\", \"url\": \"$recentUrl\", \"image\": \"$recentImage\", \"liked\": $liked }";
+    array_push($recents, $recent);
 }
 
 $final_recents = implode(", ", $recents);

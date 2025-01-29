@@ -1,0 +1,43 @@
+# My Personal Website
+
+Hi! This is the GitHub/Git repository for my personal website. This is kind of an experiment/hobby project to learn about PHP and give me something to do in my free time.
+
+## Features
+
+- **Home Page**: A brief introduction to me and my interests.
+- **Listening Page**: The last 10 songs I've listened to (via Last.fm).
+- **Blog**: Anything I want to write when I feel like it
+- **Temp**: Just a place to publicly test code
+- **Integration of 2 channels**: Production and testing with a banner to show.
+
+## Configuration
+
+You need a `private` directory in the root of the project with the following files:
+
+- `config.php`: Your secrets and config settings with the following:
+```php
+<?php
+
+const ROOT_DIR = "";
+const LASTFM_API_KEY = "";
+const CHANNEL = "dev";
+const TRACKING_ID = "";
+```
+- `data`: A directory to store data files
+  - `api`: Where the apis will write to
+  - `content/posts`: Where the blog posts are stored
+- `temp`: A directory to store temporary scripts
+
+## Hosting
+
+I use Caddy as my webserver, but anything works. Just make sure you route your traffic to `/public/index.php` and have PHP installed.
+
+My Caddyfile looks like this:
+```
+:80 {
+    root * public/
+    encode gzip
+    php_fastcgi localhost:9000
+    file_server
+}
+```
