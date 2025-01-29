@@ -17,9 +17,13 @@ $filtered = array_filter($posts, function ($post) {
 </head>
 
 <body>
-    <div class="blog-page">
-        <div class="main-column">
-            <h2># <?php echo $_SESSION['TAG']; ?></h2>
+    <div class="container">
+        <div class="body-content e-content">
+            <br>
+            <div class="post-header">
+                <h2><?php echo $_SESSION['TAG']; ?></h2>
+            </div>
+            <br>
             <?php
             $filteredPosts = array_filter($filtered, function ($post) use ($tag) {
                 return in_array($tag, $post['tags']);
@@ -28,31 +32,29 @@ $filtered = array_filter($posts, function ($post) {
             if (!empty($filteredPosts)) {
                 foreach ($filteredPosts as $post_slug => $post_data) {
                     $title = $post_data['title'];
-                    echo "<a href='/post/{$post_slug}'>~ $title</a><br/>";
+                    echo "<a href='/post/{$post_slug}'><i class='fa-regular fa-file-lines'></i> $title</a><br/>";
                 }
             } else {
-                echo "<p>No public posts found with this tag.</p>";
+                echo "<p><i class='fa-regular fa-ban'></i> No public posts found with this tag.</p>";
             }
             ?>
             <br>
             <a href="/blog" class="linkback">← Go back</a>
         </div>
-        <div class="container">
-            <h2>> Other Tags</h2>
-            <?php
-            $filteredTags = array_filter($uniqueTags, function ($localTag) use ($tag) {
-                return $localTag != $tag;
-            });
+        <div>
+            <h2>Other Tags</h2>
+            <span class="metadata">
+                <?php
+                $filteredTags = array_filter($uniqueTags, function ($localTag) use ($tag) {
+                    return $localTag != $tag;
+                });
 
-            foreach ($filteredTags as $uniqueTag) {
-                $title = $uniqueTag;
-                echo "<a href='/tag/{$uniqueTag}'># $title</a><br/>";
-            }
-            ?>
+                foreach ($filteredTags as $uniqueTag) {
+                    $title = $uniqueTag;
+                    echo "<a href='/tag/{$uniqueTag}'><i class='fa-solid fa-tag'></i> $title</a><br/>";
+                }
+                ?></span>
         </div>
-    </div>
     </div>
     <?php include_once ROOT_DIR . '/public/includes/footer.php' ?>
 </body>
-
-</html>
