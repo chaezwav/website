@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <a href="/blog" class="linkback"><i class="fa-solid fa-left-long"></i> Go back</a>
+    <a href="/blog" class="linkback">← Go back</a>
     <a style="text-decoration: none !important; color: var(--tertiary-color) !important; cursor: text;"><?php
     $string = $_SESSION['POST']['status'];
 
     switch ($string) {
         case 'unlisted':
-            echo "<i class='fa-solid fa-eye-low-vision'></i> $string";
+            echo "🫣 $string";
             break;
         case 'draft':
-            echo "<i class='fa-solid fa-file-pen'></i> $string";
+            echo "📝 $string";
             break;
         default:
             break;
@@ -48,22 +48,21 @@
             <h2>Metadata</h2>
 
             <span class="metadata">
-                <p><i class="fa-regular fa-at"></i> <a rel="author" class="p-author h-card"
-                        href="https://social.lol/@koehn">koehn</a>
+                <p>😖 <a rel="author" class="p-author h-card" href="https://social.lol/@koehn">koehn</a>
                     <image class="u-photo" src="/static/assets/logo.png" style="display: none;" />
                 </p>
-                <p><i class="fa-regular fa-clock"></i> <time class="dt-published"><?php $date = new DateTimeImmutable($_SESSION['POST']["pub_at"]);
+                <p>⏰ <time class="dt-published"><?php $date = new DateTimeImmutable($_SESSION['POST']["pub_at"]);
                 echo $date->format('Y-m-d') ?></time></p>
-                <p><i class="fa-solid fa-tag"></i> <span class="tags"><?php
+                <p>🏷️ <span class="tags"><?php
                 foreach ($_SESSION['POST']['tags'] as $tag) {
                     echo "<a class='p-category' href='/tag/$tag'>$tag</a>";
                 }
                 ?></span>
                 </p>
-                <p><i class="fa-solid fa-paperclip"></i> <?php
+                <p>🔗 <?php
                 echo "<a class='u-url' href='https://koehn.lol/post/{$_SESSION['POST']['slug']}'>permalink</a>";
                 ?></p>
-                <p><i class="fa-solid fa-hashtag"></i>
+                <p>#️⃣
                     <a href="https://koehn.lol/post/<?php echo $_SESSION['POST']['slug'] ?>/hash"><?php
                        echo substr(md5_file(ROOT_DIR . "/private/data/content/posts/{$_SESSION['POST']['slug']}.md"), 0, 8) . '...';
                        ?></a>
@@ -84,10 +83,10 @@
                     }, ARRAY_FILTER_USE_BOTH);
 
                     foreach ($filteredPosts as $slug => $post) {
-                        echo "<p><i class='fa-regular fa-file-lines'></i> <a href='/post/{$slug}'>$post[title]</a></p>";
+                        echo "<p>📄 <a href='/post/{$slug}'>$post[title]</a></p>";
                     }
                 } else {
-                    echo "<p><i class='fa-regular fa-ban'></i> No other posts</p>";
+                    echo "<p>🚫 No other posts</p>";
                 }
                 ?>
             </span>

@@ -32,10 +32,10 @@ $filtered = array_filter($posts, function ($post) {
             if (!empty($filteredPosts)) {
                 foreach ($filteredPosts as $post_slug => $post_data) {
                     $title = $post_data['title'];
-                    echo "<a href='/post/{$post_slug}'><i class='fa-regular fa-file-lines'></i> $title</a><br/>";
+                    echo "<a href='/post/{$post_slug}'>📄 $title</a><br/>";
                 }
             } else {
-                echo "<p><i class='fa-regular fa-ban'></i> No public posts found with this tag.</p>";
+                echo "<p>🚫 No public posts found with this tag.</p>";
             }
             ?>
             <br>
@@ -51,7 +51,7 @@ $filtered = array_filter($posts, function ($post) {
 
                 foreach ($filteredTags as $uniqueTag) {
                     $title = $uniqueTag;
-                    echo "<a href='/tag/{$uniqueTag}'><i class='fa-solid fa-tag'></i> $title</a><br/>";
+                    echo "<a href='/tag/{$uniqueTag}'>🏷️ $title</a><br/>";
                 }
                 ?></span>
         </div>

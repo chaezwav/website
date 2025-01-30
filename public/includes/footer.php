@@ -1,7 +1,6 @@
 <footer>
 	<span>
-		<a href="/" class="webring">©2024. Koehn Humphries. All rights reserved.</a>
+		<p class="webring">© 2025 Koehn Humphries</p>
 	</span>
-	<br>
 	<a href="https://people.pledge.party">🥳 People Pledge</a>
 </footer>

@@ -49,7 +49,7 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
 
             echo $parser->parse($preview);
             $slug = "/post/" . $featured_post['slug'];
-            echo "<a class='linkback' href=$slug><i class='fa-solid fa-right-long'></i> Continue reading...</a>"
+            echo "<a class='linkback' href=$slug>→ Continue reading...</a>"
                 ?>
         </div>
         <div>
@@ -68,17 +68,17 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
                     }, ARRAY_FILTER_USE_BOTH);
 
                     foreach ($localPosts as $slug => $post) {
-                        echo "<p><i class='fa-regular fa-file-lines'></i> <a href='/post/{$slug}'>$post[title]</a></p>";
+                        echo "<p>📄 <a href='/post/{$slug}'>$post[title]</a></p>";
                     }
                 } else {
-                    echo "<p><i class='fa-regular fa-ban'></i> No other posts</p>";
+                    echo "<p>🚫 No other posts</p>";
                 }
                 ?></span>
             <h2>Tags</h2>
             <span class="metadata">
                 <p><?php
                 foreach ($uniqueTags as $tag) {
-                    echo "<p><i class='fa-solid fa-tag'></i> <a href='/tag/$tag'>$tag</a></p>";
+                    echo "<p>🏷️ <a href='/tag/$tag'>$tag</a></p>";
                 }
                 ?></p>
             </span>
