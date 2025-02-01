@@ -9,7 +9,7 @@
     <title>Koehn Humphries</title>
 </head>
 <div class="body">
-    <h2>@ Hello, I'm Koehn</h2>
+    <h2>😣 Hello, I'm Koehn</h2>
     <p>I'm a 16 year-old High School student from the U.S. I have a
         passion for learning languages, travelling, collecting K-Pop memorabilia,
         and photography.</p>

@@ -1,18 +1,23 @@
 @font-face {
-    font-family: "Vercetti";
-    src: url("../fonts/Vercetti-Regular.woff2") format("woff2");
+    font-family: 'Moralerspace';
+    src: local('Moralerspace Argon Regular'), local('MoralerspaceArgon-Regular'),
+        url('/static/fonts/MoralerspaceArgon-Regular.woff2') format('woff2'),
+        url('/static/fonts/MoralerspaceArgon-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Moralerspace";
-    src: url("../fonts/MoralerspaceArgon-Bold.ttf") format("woff2 supports variations");
+    font-family: 'Vercetti';
+    src: url('/static/fonts/Vercetti-Regular.ttf');
     font-display: swap;
 }
 
+
 :root {
-    --font: "Vercetti", -apple-system, serif;
-    --font-mono: "Moralerspace", "Osaka-Mono" monospace;
+    --font-base: "Vercetti", -apple-system, serif;
+    --font-mono: 'Moralerspace', "Osaka-Mono", monospace;
     --primary-color: var(--arc-palette-foregroundSecondary, #f98fb5);
     --secondary-color: var(--arc-palette-title, #fff2f7);
     --tertiary-color: var(--arc-palette-subtitle, #b3a9ae);
@@ -62,7 +67,7 @@ body {
     height: 100%;
     vertical-align: middle !important;
     font-size: 1.5rem;
-    font-family: var(--font);
+    font-family: var(--font-base);
 }
 
 blockquote {
@@ -100,7 +105,7 @@ h3 {
 
 :is(h1, h2, h3, h4, h5, h6) {
     color: var(--primary-color) !important;
-    font-family: var(--font-mono);
+    font-family: var(--font-mono) !important;
 }
 
 hr {
@@ -137,43 +142,6 @@ hr {
     }
 }
 
-.mentions-section {
-    margin-top: 1rem;
-    border-top: 1px solid var(--tertiary-color);
-}
-
-.profile.mention {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--tertiary-color);
-}
-
-.profile.mention:last-child {
-    margin-bottom: 0;
-}
-
-.profile.mention .body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    /* Reduce this value to bring elements closer together */
-}
-
-.profile.mention .body span {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.profile.mention .body p {
-    margin: 0;
-    padding: 0;
-}
-
-.profile.mention .body {
-    width: 100%;
-}
-
 .pill {
     /* background-color: var(--primary-color) !important; */
     color: var(--primary-color) !important;
@@ -187,19 +155,24 @@ hr {
     cursor: auto;
 }
 
+#home {
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+}
+
 a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
     font-family: var(--font-mono) !important;
+    color: var(--secondary-color);
+    text-decoration: underline solid !important;
+    font-weight: 500;
 }
 
 a:hover {
-    color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
     cursor: pointer;
-    text-decoration: underline;
-    text-decoration-style: wavy;
-    -webkit-text-decoration-style: wavy;
+    top: -0.125rem;
+    left: -0.125rem;
+    position: relative;
 }
 
 .post-header {
@@ -273,25 +246,11 @@ a:hover {
 
 .date {
     color: var(--tertiary-color);
-    font-family: var(--font-mono);
+    font-family: var(--font-mono) !important;
     display: inline;
 }
 
-.banner p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: -6% -50% 0;
-    color: var(--background-color);
-    background-color: var(--primary-color);
-    font-family: InterVariable, sans-serif;
-    font-weight: bold;
-    padding: 1em;
-}
-
 .metadata {
-    color: var(--primary-color);
     font-family: var(--font-mono);
     line-height: 1.2 !important;
 }
@@ -311,7 +270,7 @@ a:hover {
 }
 
 .metadata .tags {
-    display: inline-flex;
+    display: inline;
     gap: 0.5rem;
     flex-wrap: wrap;
 }

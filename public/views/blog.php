@@ -36,10 +36,10 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
                 <p class="webring">| <?php echo $featured_post['description']; ?></p>
             </div>
             <p class="webring"><?php
-            $featured = new DateTimeImmutable($featured_post["pub_at"]);
-            $formatted = $featured->format('Y-m-d');
-            echo $formatted;
-            ?></p>
+                                $featured = new DateTimeImmutable($featured_post["pub_at"]);
+                                $formatted = $featured->format('Y-m-d');
+                                echo $formatted;
+                                ?></p>
             <?php
             // truncates the text
             $text_truncated = mb_substr($featured_post['content'], 0, mb_strpos($featured_post['content'], ' ', 150));
@@ -50,7 +50,7 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
             echo $parser->parse($preview);
             $slug = "/post/" . $featured_post['slug'];
             echo "<a class='linkback' href=$slug>→ Continue reading...</a>"
-                ?>
+            ?>
         </div>
         <div>
             <h2>Other Posts</h2>
@@ -77,10 +77,10 @@ $featured_post = array_values($filtered)[0] + ['slug' => array_keys($filtered)[0
             <h2>Tags</h2>
             <span class="metadata">
                 <p><?php
-                foreach ($uniqueTags as $tag) {
-                    echo "<p>🏷️ <a href='/tag/$tag'>$tag</a></p>";
-                }
-                ?></p>
+                    foreach ($uniqueTags as $tag) {
+                        echo "<p>🏷️ <a href='/tag/$tag'>$tag</a></p>";
+                    }
+                    ?></p>
             </span>
         </div>
     </div>

@@ -7,8 +7,8 @@ function produceNote($noteContext)
 
     $noteHtml = <<<HTML
     <div class="block">
-        <p>$content</p>
         <p><small>$date</small></p>
+        <p>$content</p>
     </div>
 HTML;
 

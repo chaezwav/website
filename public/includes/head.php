@@ -21,14 +21,12 @@ $playing = json_decode(
 	<meta name="theme-color" content="#101010">
 	<script defer src='https://monitor.koehn.lol/script.js' data-website-id=<?php echo TRACKING_ID; ?>>
 	</script>
-	<script src="https://kit.fontawesome.com/4c53100ac3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<?php if (CHANNEL == "dev"): ?>
 		<div class="alert">
-			<p>🚨 You're viewing the development build. Expect bugs. Checkout
-				the normal channel here: <a style="color: var(--background-color) !important;"
+			<p>🚨 You're viewing the development build. Expect bugs. Checkout the stable channel: <a style="color: var(--background-color) !important;"
 					href="https://koehn.lol">https://koehn.lol</a></p>
 		</div>
 	<?php endif; ?>
@@ -46,7 +44,7 @@ $playing = json_decode(
 					<a class="u-url u-uid" style="display: none;" href="/">
 						<img alt="koehn.lol" class="u-photo p-logo" src="/static/assets/logo.png" width="80">
 					</a>
-					<a href="/">公園</a>
+					<a href="/" id="home">公園</a>
 					<h2 class="p-name" style="display: none;">Koehn</h2>
 					<a class="u-email" href="mailto:koehn@omg.lol" rel="me" style='display: none;'></a>
 					<a href="https://github.com/chaezwav/" class="u-url item" rel="me">@github</a>
