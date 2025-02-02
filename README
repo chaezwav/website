@@ -15,29 +15,14 @@ Hi! This is the GitHub/Git repository for my personal website. This is kind of a
 You need a `private` directory in the root of the project with the following files:
 
 - `config.php`: Your secrets and config settings with the following:
-```php
-<?php
 
-const ROOT_DIR = "";
-const LASTFM_API_KEY = "";
-const CHANNEL = "dev";
-const TRACKING_ID = "";
-```
-- `data`: A directory to store data files
-  - `api`: Where the apis will write to
-  - `content/posts`: Where the blog posts are stored
-- `temp`: A directory to store temporary scripts
+  ```php
+  <?php
 
-## Hosting
-
-I use Caddy as my webserver, but anything works. Just make sure you route your traffic to `/public/index.php` and have PHP installed.
-
-My Caddyfile looks like this:
-```
-:80 {
-    root * public/
-    encode gzip
-    php_fastcgi localhost:9000
-    file_server
-}
-```
+  const CHANNEL = '[dev|prod]';
+  const ROOT_DIR = '[full path]';
+  const LASTFM_API_KEY = '[key from last.fm]';
+  const TRACKING_ID = "[umami tracking id]";
+  const MASTODON_TOKEN = "[access key from mastodon]";
+  const MASTODON_INSTANCE = "[mastodon instance ROOT URL (i.e https://social.lol)]";
+  ```
